@@ -1,0 +1,84 @@
+Glamistry E-Project
+
+CREATE TABLE users(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    number VARCHAR(11) NOT NULL,
+    dob DATE NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    number VARCHAR(11) NOT NULL,
+    token VARCHAR(64) NOT NULL,
+    expires_at DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE category(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    image_name VARCHAR(255) NOT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    category_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
+
+);
+
+-- Jewelery (category_id = 1)
+INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
+('Gold Necklace', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Silver Bracelet', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Diamond Ring', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Pearl Earrings', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Anklet', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Charm Pendant', 'product-2.png', './public/product_images/product-2.png', 56, 1);
+
+-- Lip Gloss (category_id = 2)
+INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
+('Cherry Lip Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Matte Lip Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Clear Shine Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Rose Tinted Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Vanilla Scented Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Glitter Lip Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2);
+
+-- Mascara (category_id = 3)
+INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
+('Waterproof Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Volumizing Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Lengthening Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Curling Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Fiber Lash Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Colored Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3);
+
+CREATE TABLE cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT DEFAULT 1,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+
