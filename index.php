@@ -34,13 +34,12 @@
 	if (!isset($_SESSION['user']['id']) && isset($_COOKIE['remember'])) {
 		$token = $_COOKIE['remember'];
 
-		$user = $conn->prepare("SELECT * FROM user_tokens WHERE token = ? AND expires_at > NOW()");
-		$user->bind_param("s", $token);
-		$user->execute();
-		$tokenData = $stmt->fetch();
+		$sql = "SELECT * FROM user_tokens WHERE token = '$token' AND expires_at > NOW();";
+		$user = $conn->query($sql);
+		$tokenData = $user->fetch_assoc();
 
 		if ($tokenData) {
-			$_SESSION['user'] = $tokenData['user_id'];
+			// $_SESSION['user'] = $tokenData['user_id'];
 			$_SESSION['user'] = ['id' => $tokenData['user_id'], 'name' => $tokenData['name'], 'email' => $tokenData['email'], 'number' => $tokenData['number']];
 			// Optional: refresh cookie/token expiration
 		}
@@ -49,45 +48,73 @@
 
 	include('./client/header.php');
 
+	if (isset($_GET['checkout'])) {
+		if (isset($_SESSION['user']['id'])) {
+			if(isset($_SESSION['allow_checkout'])){
+				include('./client/checkout.php');
+			} else{
+				header('Location: /glamistry/?cart=true');
+			}
+		} else {
+			header('Location: /glamistry/?login=true');
+		}
+	} else {
+		if(isset($_SESSION['allow_checkout'])){
+			unset($_SESSION['allow_checkout']);
+		}
+	} 
+
+	if ($_SERVER['REQUEST_URI'] === '/glamistry' || $_SERVER['REQUEST_URI'] === '/glamistry/' || $_SERVER['REQUEST_URI'] === '/glamistry/index.php') {
+		include('./client/home.php');
+	}
+
 	if (isset($_GET['login'])) {
 		if (!isset($_SESSION['user']['id'])) {
 			include('./client/login.php');
 		} else {
-			include('./client/home.php');
+			header('Location: /glamistry/');
 		}
-	} elseif (isset($_GET['signup'])) {
+	} 
+	
+	if (isset($_GET['signup'])) {
 		if (!isset($_SESSION['user']['id'])) {
 			include('./client/signup.php');
 		} else {
-			include('./client/home.php');
+			header('Location: /glamistry/');
 		}
-	} elseif (isset($_GET['shop'])) {
+	} 
+	
+	if (isset($_GET['shop'])) {
 		include('./client/shop.php');
-	} elseif (isset($_GET['product_detail'])) {
+	} 
+	
+	if (isset($_GET['product_detail'])) {
 		include('./client/product_detail.php');
-	} elseif (isset($_GET['about'])) {
+	} 
+	
+	if (isset($_GET['about'])) {
 		include('./client/about.php');
-	} elseif (isset($_GET['services'])) {
+	} 
+	
+	if (isset($_GET['services'])) {
 		include('./client/services.php');
-	} elseif (isset($_GET['blog'])) {
+	} 
+	
+	if (isset($_GET['blog'])) {
 		include('./client/blog.php');
-	} elseif (isset($_GET['contact'])) {
+	} 
+	
+	if (isset($_GET['contact'])) {
 		include('./client/contact.php');
-	} elseif (isset($_GET['cart'])) {
+	} 
+	
+	if (isset($_GET['cart'])) {
 		if (isset($_SESSION['user']['id'])) {
 			include('./client/cart.php');
 		} else {
 			include('./client/home.php');
 		}
-	} elseif (isset($_GET['checkout'])) {
-		if (isset($_SESSION['user']['id'])) {
-			include('./client/checkout.php');
-		} else {
-			include('./client/home.php');
-		}
-	} else {
-		include('./client/home.php');
-	}
+	} 
 
 	include('./client/footer.php');
 

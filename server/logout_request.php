@@ -11,5 +11,3 @@ if (isset($_SESSION['user']['id'])) {
 } else {
     header('Location: /glamistry/');
 }
-
-?>

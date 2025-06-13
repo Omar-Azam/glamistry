@@ -51,18 +51,6 @@
 							<button class="btn btn-outline-black btn-sm btn-block" onclick="window.location='?shop=true'">Continue Shopping</button>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<label class="text-black h4" for="coupon">Coupon</label>
-							<p>Enter your coupon code if you have one.</p>
-						</div>
-						<div class="col-md-8 mb-3 mb-md-0">
-							<input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-black">Apply Coupon</button>
-						</div>
-					</div>
 				</div>
 				<div class="col-md-6 pl-5">
 					<div class="row justify-content-end">
@@ -107,18 +95,23 @@
 				$.ajax({
 					url: "./server/cart_page_request.php",
 					type: "GET",
-					data: {load: true},
+					data: {
+						load: true
+					},
 					success: function(data) {
 						$("#cart_products").html(data);
 					}
 				});
 			}
 			load();
+
 			function total() {
 				$.ajax({
 					url: "./server/cart_page_request.php",
 					type: "GET",
-					data: {total: true},
+					data: {
+						total: true
+					},
 					success: function(data) {
 						$("#total_prices").html(data);
 					}
@@ -127,56 +120,73 @@
 			total();
 			$(document).on('click', '#increase', function(e) {
 				// $('#increase').on('click', function(e) {
-					var product_id = $(e.target).val();
-					$.ajax({
-						url: "./server/cart_page_request.php",
-						type: "POST",
-						data: {
-							product_id: product_id,
-							increase: true
-						},
-						success: function(data) {
-							load();
-							total();
-						}
-					});
-					// });
+				var product_id = $(e.target).val();
+				$.ajax({
+					url: "./server/cart_page_request.php",
+					type: "POST",
+					data: {
+						product_id: product_id,
+						increase: true
+					},
+					success: function(data) {
+						load();
+						total();
+					}
 				});
-				$(document).on('click', '#decrease', function(e) {
-					// $('#decrease').on('click', function(e) {
-						var product_id = $(e.target).val();
-					console.log(product_id);
-					$.ajax({
-						url: "./server/cart_page_request.php",
-						type: "POST",
-						data: {
-							product_id: product_id,
-							decrease: true
-						},
-						success: function(data) {
-							load();
-							total();
-						}
-					});
-			// });
+				// });
+			});
+			$(document).on('click', '#decrease', function(e) {
+				// $('#decrease').on('click', function(e) {
+				var product_id = $(e.target).val();
+				console.log(product_id);
+				$.ajax({
+					url: "./server/cart_page_request.php",
+					type: "POST",
+					data: {
+						product_id: product_id,
+						decrease: true
+					},
+					success: function(data) {
+						load();
+						total();
+					}
+				});
+				// });
 			});
 			$(document).on('click', '#delete', function(e) {
-					// $('#decrease').on('click', function(e) {
-						var product_id = $(e.target).data('id');
-					console.log(product_id);
-					$.ajax({
-						url: "./server/cart_page_request.php",
-						type: "POST",
-						data: {
-							product_id: product_id,
-							delete: true
-						},
-						success: function(data) {
+				// $('#decrease').on('click', function(e) {
+				var product_id = $(e.target).data('id');
+				console.log(product_id);
+				$.ajax({
+					url: "./server/cart_page_request.php",
+					type: "POST",
+					data: {
+						product_id: product_id,
+						delete: true
+					},
+					success: function(data) {
+						load();
+						total();
+					}
+				});
+				// });
+			});
+			$(document).on('click', '#checkout', function(e) {
+				$.ajax({
+					url: "./server/cart_page_request.php",
+					type: "GET",
+					data: {
+						checkout: true
+					},
+					success: function(data) {
+						if(data == 1){
+							window.location = "?checkout=true";
+						} else{
 							load();
 							total();
 						}
-					});
-			// });
+					}
+				});
 			});
 		});
 	</script>

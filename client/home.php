@@ -76,7 +76,7 @@
 
             <?php
 
-            $product_sql = "SELECT * FROM products LIMIT 3;";
+            $product_sql = "SELECT * FROM products ORDER BY RAND() LIMIT 3;";
 
             include('./client/product.php');
 

@@ -17,13 +17,7 @@
 
 		<div class="untree_co-section">
 			<div class="container">
-				<div class="row mb-5">
-					<div class="col-md-12">
-						<div class="border p-4 rounded" role="alert">
-							Returning customer? <a href="#">Click here</a> to login
-						</div>
-					</div>
-				</div>
+
 				<div class="row">
 					<div class="col-md-6 mb-5 mb-md-0">
 						<h2 class="h3 mb-3 text-black">Billing Details</h2>
@@ -195,23 +189,6 @@
 
 						<div class="row mb-5">
 							<div class="col-md-12">
-								<h2 class="h3 mb-3 text-black">Coupon Code</h2>
-								<div class="p-3 p-lg-5 border bg-white">
-
-									<label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
-									<div class="input-group w-75 couponcode-wrap">
-										<input type="text" class="form-control me-2" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
-										<div class="input-group-append">
-											<button class="btn btn-black btn-sm" type="button" id="button-addon2">Apply</button>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-
-						<div class="row mb-5">
-							<div class="col-md-12">
 								<h2 class="h3 mb-3 text-black">Your Order</h2>
 								<div class="p-3 p-lg-5 border bg-white">
 									<table class="table site-block-order-table mb-5">
@@ -220,22 +197,52 @@
 											<th>Total</th>
 										</thead>
 										<tbody>
-											<tr>
-												<td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-												<td>$250.00</td>
+											<?php
+											if (isset($_SESSION['user']['id'])) {
+												$user_id = $_SESSION['user']['id'];
+												$sql = "SELECT * FROM cart WHERE user_id = $user_id ORDER BY id DESC;";
+
+												$result = $conn->query($sql);
+
+												if ($result->num_rows > 0) {
+													while ($row = $result->fetch_assoc()) {
+														$product_id = $row['product_id'];
+														$quantity = $row['quantity'];
+														$product_sql = "SELECT * FROM products WHERE id = $product_id;";
+														$product_result = $conn->query($product_sql);
+														while ($product_row = $product_result->fetch_assoc()) {
+															$name = $product_row['name'];
+															$price = $product_row['price'];
+															$total = $price * $quantity;
+															echo "<tr>
+												<td>$name <strong class='mx-2'>x</strong> $quantity</td>
+												<td>$$total.00</td>
+											</tr>";
+														}
+													}
+												}
+
+												$total_sql = "SELECT SUM(p.price * c.quantity) AS total_price FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $user_id;
+";
+
+												$result = $conn->query($total_sql);
+
+												if ($result->num_rows > 0) {
+													$row = $result->fetch_assoc();
+													$total_price = $row['total_price'];
+													echo "<tr>
+												<td class='text-black font-weight-bold'><strong>Cart Subtotal</strong></td>
+												<td class='text-black'>$$total_price.00</td>
 											</tr>
 											<tr>
-												<td>Polo Shirt <strong class="mx-2">x</strong> 1</td>
-												<td>$100.00</td>
-											</tr>
-											<tr>
-												<td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-												<td class="text-black">$350.00</td>
-											</tr>
-											<tr>
-												<td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-												<td class="text-black font-weight-bold"><strong>$350.00</strong></td>
-											</tr>
+												<td class='text-black font-weight-bold'><strong>Order Total</strong></td>
+												<td class='text-black font-weight-bold'><strong>$$total_price.00</strong></td>
+											</tr>";
+												}
+											}
+											?>
+
+
 										</tbody>
 									</table>
 
@@ -270,7 +277,7 @@
 									</div>
 
 									<div class="form-group">
-										<button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Place Order</button>
+										<button class="btn btn-black btn-lg py-3 btn-block">Place Order</button>
 									</div>
 
 								</div>
@@ -282,3 +289,7 @@
 				<!-- </form> -->
 			</div>
 		</div>
+
+		<script defer>
+			// window.location.reload();
+		</script>

@@ -51,12 +51,12 @@
 
 						$category_id = intval($_GET["category_id"]);
 
-						$product_sql = "SELECT * FROM products WHERE category_id = $category_id;";
+						$product_sql = "SELECT * FROM products WHERE category_id = $category_id ORDER BY id DESC;";
 
 						include('./client/product.php');
 					} else {
 
-						$product_sql = "SELECT * FROM products;";
+						$product_sql = "SELECT * FROM products ORDER BY id DESC;";
 
 						include('./client/product.php');
 					}

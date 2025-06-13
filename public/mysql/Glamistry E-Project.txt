@@ -34,6 +34,7 @@ CREATE TABLE products (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     image_name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
     image_path VARCHAR(255) NOT NULL,
     price INT NOT NULL,
     category_id INT NOT NULL,
@@ -45,30 +46,30 @@ CREATE TABLE products (
 
 -- Jewelery (category_id = 1)
 INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
-('Gold Necklace', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Silver Bracelet', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Diamond Ring', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Pearl Earrings', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Anklet', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Charm Pendant', 'product-2.png', './public/product_images/product-2.png', 56, 1);
+('Gold Necklace', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Silver Bracelet', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Diamond Ring', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Pearl Earrings', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Anklet', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
+('Charm Pendant', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1);
 
 -- Lip Gloss (category_id = 2)
 INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
-('Cherry Lip Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Matte Lip Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Clear Shine Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Rose Tinted Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Vanilla Scented Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Glitter Lip Gloss', 'product-2.png', './public/product_images/product-2.png', 56, 2);
+('Cherry Lip Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Matte Lip Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Clear Shine Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Rose Tinted Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Vanilla Scented Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
+('Glitter Lip Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2);
 
 -- Mascara (category_id = 3)
 INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
-('Waterproof Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Volumizing Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Lengthening Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Curling Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Fiber Lash Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Colored Mascara', 'product-2.png', './public/product_images/product-2.png', 56, 3);
+('Waterproof Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Volumizing Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Lengthening Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Curling Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Fiber Lash Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
+('Colored Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3);
 
 CREATE TABLE cart (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -12,11 +12,12 @@ if (isset($_SESSION['user']['id'])) {
         if (isset($_GET['load'])) {
 
 
-            $sql = "SELECT * FROM cart WHERE user_id = $user_id;";
+            $sql = "SELECT * FROM cart WHERE user_id = $user_id ORDER BY id DESC;";
 
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
+                
                 while ($row = $result->fetch_assoc()) {
                     $product_id = $row['product_id'];
                     $quantity = $row['quantity'];
@@ -41,7 +42,7 @@ if (isset($_SESSION['user']['id'])) {
                                         <div class='input-group-prepend'>
                                         <button class='btn btn-outline-black' id='decrease' value='$product_id' type='button'>&minus;</button>
                                                 </div>
-                                                <input type='text' class='form-control text-center quantity-amount' value='$quantity' placeholder='' aria-label='Example text with button addon' aria-describedby='button-addon1'>
+                                                <input type='text' class='form-control text-center quantity-amount' value='$quantity' aria-label='Example text with button addon' aria-describedby='button-addon1'>
                                                 <div class='input-group-append'>
                                                 <button class='btn btn-outline-black' id='increase' value='$product_id' type='button'>&plus;</button>
                                                 </div>
@@ -53,6 +54,8 @@ if (isset($_SESSION['user']['id'])) {
                                                 </tr>";
                     }
                 }
+            } else {
+                unset($_SESSION['checkout_data']);
             }
         }
 
@@ -90,11 +93,17 @@ if (isset($_SESSION['user']['id'])) {
     
                                 <div class='row'>
                                     <div class='col-md-12'>
-                                        <a class='btn btn-black btn-lg py-3 btn-block' href='?checkout=true'>Proceed To Checkout</a>
+                                        <a class='btn btn-black btn-lg py-3 btn-block' id='checkout'>Proceed To Checkout</a>
                                     </div>
                                 </div>";
             }
         }
+
+        if (isset($_GET['checkout'])) {
+            $_SESSION['allow_checkout'] = true;
+            echo 1;
+        }
+
     }
 
 
@@ -150,8 +159,8 @@ if (isset($_SESSION['user']['id'])) {
 
                 $sql = "DELETE FROM cart WHERE product_id = $product_id AND user_id = $user_id;";
                 $conn->query($sql);
-
             }
         }
+
     }
 }

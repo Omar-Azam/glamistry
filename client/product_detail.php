@@ -13,6 +13,7 @@
                         $row = $product_result->fetch_assoc();
                         $id = $row['id'];
                         $name = $row['name'];
+                        $description = $row['description'];
                         $price = $row['price'];
                         $image_path = $row['image_path'];
                         // product_id
@@ -44,7 +45,6 @@
                                 4.5
                             </span>
                         </div>
-                        <span class='text-muted'><i class='fas fa-shopping-basket fa-sm mx-1'></i>154 orders</span>
                         <span class='text-success ms-2'>In stock</span>
                     </div>
 
@@ -54,8 +54,7 @@
                     </div>
 
                     <p>
-                        Modern look and quality demo item is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing low-top shirts for
-                        men.
+                    $description
                     </p>
 ";
                     }
@@ -102,8 +101,9 @@
                         <div class="row">
                             <?php
                             $category_id = intval($_GET["category_id"]);
+                            $product_id = intval($_GET["product_id"]);
 
-                            $product_sql = "SELECT * FROM products WHERE category_id = $category_id LIMIT 4;";
+                            $product_sql = "SELECT * FROM products WHERE id != $product_id AND category_id = $category_id ORDER BY RAND() LIMIT 4;";
 
                             include('./client/product.php');
                             ?>
@@ -198,8 +198,8 @@
                 success: function(data) {
                     if (data == 1) {
                         showSuccessModal();
-                    } else if(data == 2){
-                        window.location='?login=true';
+                    } else if (data == 2) {
+                        window.location = '?login=true';
                     } else {
                         showErrorModal();
                     }
