@@ -11,7 +11,7 @@
                 <div class="subscription-form">
                     <h3 class="d-flex align-items-center"><span class="me-1"><img src="./public/images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
 
-                    <form action="#" class="row g-3">
+                    <div class="row g-3">
                         <div class="col-auto">
                             <input type="text" class="form-control" placeholder="Enter your name" value="<?php if (isset($_SESSION['user']['id'])) {
                                                                                                                 echo $_SESSION['user']['name'];
@@ -27,7 +27,7 @@
                                 <span class="fa fa-paper-plane"></span>
                             </button>
                         </div>
-                    </form>
+                    </div>
 
                 </div>
             </div>

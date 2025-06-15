@@ -617,6 +617,12 @@ a.more {
   z-index: -1;
 }
 
+iframe{
+  width: 100%;
+  border-radius: .7vw;
+  outline: .3vw solid #3b5d50;
+}
+
 .testimonial-section {
   padding: 3rem 0 7rem 0;
 }

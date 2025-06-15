@@ -18,219 +18,127 @@
 		<div class="untree_co-section">
 			<div class="container">
 
-				<div class="row">
-					<div class="col-md-6 mb-5 mb-md-0">
-						<h2 class="h3 mb-3 text-black">Billing Details</h2>
-						<div class="p-3 p-lg-5 border bg-white">
-							<div class="form-group">
-								<label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
-								<select id="c_country" class="form-control">
-									<option value="1">Select a country</option>
-									<option value="2">bangladesh</option>
-									<option value="3">Algeria</option>
-									<option value="4">Afghanistan</option>
-									<option value="5">Ghana</option>
-									<option value="6">Albania</option>
-									<option value="7">Bahrain</option>
-									<option value="8">Colombia</option>
-									<option value="9">Dominican Republic</option>
-								</select>
-							</div>
-							<div class="form-group row">
-								<div class="col-md-6">
-									<label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_fname" name="c_fname">
-								</div>
-								<div class="col-md-6">
-									<label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_lname" name="c_lname">
-								</div>
-							</div>
+				<form action="./server/checkout_request.php" method="post">
 
-							<div class="form-group row">
-								<div class="col-md-12">
-									<label for="c_companyname" class="text-black">Company Name </label>
-									<input type="text" class="form-control" id="c_companyname" name="c_companyname">
-								</div>
-							</div>
+					<div class="row">
+						<div class="col-md-6 mb-5 mb-md-0">
+							<h2 class="h3 mb-3 text-black">Billing Details</h2>
+							<div class="p-3 p-lg-5 border bg-white">
 
-							<div class="form-group row">
-								<div class="col-md-12">
-									<label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_address" name="c_address" placeholder="Street address">
-								</div>
-							</div>
 
-							<div class="form-group mt-3">
-								<input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
-							</div>
-
-							<div class="form-group row">
-								<div class="col-md-6">
-									<label for="c_state_country" class="text-black">State / Country <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_state_country" name="c_state_country">
+								<div class="form-group">
+									<label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
+									<select id="c_country" class="form-control" name="country">
+										<option value="">Select a country</option>
+										<option value="Pakistan" <?php if(isset($_SESSION['country']) == "Pakistan"){echo "selected";} ?> >Pakistan</option>
+										<option value="Algeria" <?php if(isset($_SESSION['country']) == "Algeria"){echo "selected";} ?> >Algeria</option>
+										<option value="Afghanistan" <?php if(isset($_SESSION['country']) == "Afghanistan"){echo "selected";} ?> >Afghanistan</option>
+										<option value="Ghana" <?php if(isset($_SESSION['country']) == "Ghana"){echo "selected";} ?> >Ghana</option>
+										<option value="Albania" <?php if(isset($_SESSION['country']) == "Albania"){echo "selected";} ?> >Albania</option>
+										<option value="Bahrain" <?php if(isset($_SESSION['country']) == "Bahrain"){echo "selected";} ?> >Bahrain</option>
+										<option value="Colombia" <?php if(isset($_SESSION['country']) == "Colombia"){echo "selected";} ?> >Colombia</option>
+										<option value="Dominican Republic" <?php if(isset($_SESSION['country']) == "Dominican Republic"){echo "selected";} ?> >Dominican Republic</option>
+									</select>
 								</div>
-								<div class="col-md-6">
-									<label for="c_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
-								</div>
-							</div>
-
-							<div class="form-group row mb-5">
-								<div class="col-md-6">
-									<label for="c_email_address" class="text-black">Email Address <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_email_address" name="c_email_address">
-								</div>
-								<div class="col-md-6">
-									<label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Phone Number">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="c_create_account" class="text-black" data-bs-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account"> Create an account?</label>
-								<div class="collapse" id="create_an_account">
-									<div class="py-2 mb-4">
-										<p class="mb-3">Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-										<div class="form-group">
-											<label for="c_account_password" class="text-black">Account Password</label>
-											<input type="email" class="form-control" id="c_account_password" name="c_account_password" placeholder="">
-										</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="c_fname" class="text-black">First Name <span class="text-danger">*</span> <?php error("f_name_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_fname" name="f_name" value="<?php value("f_name") ?>">
+									</div>
+									<div class="col-md-6">
+										<label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span> <?php error("l_name_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_lname" name="l_name" value="<?php value("l_name") ?>">
 									</div>
 								</div>
-							</div>
 
-
-							<div class="form-group">
-								<label for="c_ship_different_address" class="text-black" data-bs-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Ship To A Different Address?</label>
-								<div class="collapse" id="ship_different_address">
-									<div class="py-2">
-
-										<div class="form-group">
-											<label for="c_diff_country" class="text-black">Country <span class="text-danger">*</span></label>
-											<select id="c_diff_country" class="form-control">
-												<option value="1">Select a country</option>
-												<option value="2">bangladesh</option>
-												<option value="3">Algeria</option>
-												<option value="4">Afghanistan</option>
-												<option value="5">Ghana</option>
-												<option value="6">Albania</option>
-												<option value="7">Bahrain</option>
-												<option value="8">Colombia</option>
-												<option value="9">Dominican Republic</option>
-											</select>
-										</div>
-
-
-										<div class="form-group row">
-											<div class="col-md-6">
-												<label for="c_diff_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_fname" name="c_diff_fname">
-											</div>
-											<div class="col-md-6">
-												<label for="c_diff_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_lname" name="c_diff_lname">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<div class="col-md-12">
-												<label for="c_diff_companyname" class="text-black">Company Name </label>
-												<input type="text" class="form-control" id="c_diff_companyname" name="c_diff_companyname">
-											</div>
-										</div>
-
-										<div class="form-group row  mb-3">
-											<div class="col-md-12">
-												<label for="c_diff_address" class="text-black">Address <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_address" name="c_diff_address" placeholder="Street address">
-											</div>
-										</div>
-
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
-										</div>
-
-										<div class="form-group row">
-											<div class="col-md-6">
-												<label for="c_diff_state_country" class="text-black">State / Country <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_state_country" name="c_diff_state_country">
-											</div>
-											<div class="col-md-6">
-												<label for="c_diff_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_postal_zip" name="c_diff_postal_zip">
-											</div>
-										</div>
-
-										<div class="form-group row mb-5">
-											<div class="col-md-6">
-												<label for="c_diff_email_address" class="text-black">Email Address <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_email_address" name="c_diff_email_address">
-											</div>
-											<div class="col-md-6">
-												<label for="c_diff_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_diff_phone" name="c_diff_phone" placeholder="Phone Number">
-											</div>
-										</div>
-
+								<div class="form-group row">
+									<div class="col-md-12">
+										<label for="c_companyname" class="text-black">Company Name </label>
+										<input type="text" class="form-control" id="c_companyname" name="company" value="<?php value("company") ?>">
 									</div>
-
 								</div>
-							</div>
 
-							<div class="form-group">
-								<label for="c_order_notes" class="text-black">Order Notes</label>
-								<textarea name="c_order_notes" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here..."></textarea>
-							</div>
+								<div class="form-group row">
+									<div class="col-md-12">
+										<label for="c_address" class="text-black">Address <span class="text-danger">*</span> <?php error("address_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_address" name="address" placeholder="Street address">
+									</div>
+								</div>
 
+								<div class="form-group mt-3">
+									<input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)" name="address_2" value="<?php value("address_2") ?>">
+								</div>
+
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="c_state_country" class="text-black">State / Province <span class="text-danger">*</span> <?php error("state_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_state_country" name="state" value="<?php value("state") ?>">
+									</div>
+									<div class="col-md-6">
+										<label for="c_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span> <?php error("postal_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_postal_zip" name="postal" value="<?php value("postal") ?>">
+									</div>
+								</div>
+
+								<div class="form-group row mb-5">
+									<div class="col-md-6">
+										<label for="c_email_address" class="text-black">Email Address <span class="text-danger">*</span> <?php error("email_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_email_address" name="email" value="<?php value("email") ?>">
+									</div>
+									<div class="col-md-6">
+										<label for="c_phone" class="text-black">Phone <span class="text-danger">*</span> <?php error("number_error", 5000) ?> </label>
+										<input type="text" class="form-control" id="c_phone" name="number" placeholder="Phone Number" value="<?php value("number") ?>">
+									</div>
+								</div>
+
+							</div>
 						</div>
-					</div>
-					<div class="col-md-6">
+						<div class="col-md-6">
 
-						<div class="row mb-5">
-							<div class="col-md-12">
-								<h2 class="h3 mb-3 text-black">Your Order</h2>
-								<div class="p-3 p-lg-5 border bg-white">
-									<table class="table site-block-order-table mb-5">
-										<thead>
-											<th>Product</th>
-											<th>Total</th>
-										</thead>
-										<tbody>
-											<?php
-											if (isset($_SESSION['user']['id'])) {
-												$user_id = $_SESSION['user']['id'];
-												$sql = "SELECT * FROM cart WHERE user_id = $user_id ORDER BY id DESC;";
+							<div class="row mb-5">
+								<div class="col-md-12">
+									<h2 class="h3 mb-3 text-black">Your Order</h2>
+									<div class="p-3 p-lg-5 border bg-white">
+										<table class="table site-block-order-table mb-5">
+											<thead>
+												<th>Product</th>
+												<th>Total</th>
+											</thead>
+											<tbody>
+												<?php
+												if (isset($_SESSION['user']['id'])) {
+													$user_id = $_SESSION['user']['id'];
+													$sql = "SELECT * FROM cart WHERE user_id = $user_id ORDER BY id DESC;";
 
-												$result = $conn->query($sql);
+													$result = $conn->query($sql);
 
-												if ($result->num_rows > 0) {
-													while ($row = $result->fetch_assoc()) {
-														$product_id = $row['product_id'];
-														$quantity = $row['quantity'];
-														$product_sql = "SELECT * FROM products WHERE id = $product_id;";
-														$product_result = $conn->query($product_sql);
-														while ($product_row = $product_result->fetch_assoc()) {
-															$name = $product_row['name'];
-															$price = $product_row['price'];
-															$total = $price * $quantity;
-															echo "<tr>
+													if ($result->num_rows > 0) {
+														while ($row = $result->fetch_assoc()) {
+															$product_id = $row['product_id'];
+															$quantity = $row['quantity'];
+															$product_sql = "SELECT * FROM products WHERE id = $product_id;";
+															$product_result = $conn->query($product_sql);
+															while ($product_row = $product_result->fetch_assoc()) {
+																$name = $product_row['name'];
+																$price = $product_row['price'];
+																$total = $price * $quantity;
+																echo "<tr>
 												<td>$name <strong class='mx-2'>x</strong> $quantity</td>
 												<td>$$total.00</td>
 											</tr>";
+															}
 														}
 													}
-												}
 
-												$total_sql = "SELECT SUM(p.price * c.quantity) AS total_price FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $user_id;
+													$total_sql = "SELECT SUM(p.price * c.quantity) AS total_price FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = $user_id;
 ";
 
-												$result = $conn->query($total_sql);
+													$result = $conn->query($total_sql);
 
-												if ($result->num_rows > 0) {
-													$row = $result->fetch_assoc();
-													$total_price = $row['total_price'];
-													echo "<tr>
+													if ($result->num_rows > 0) {
+														$row = $result->fetch_assoc();
+														$total_price = $row['total_price'];
+														echo "<tr>
 												<td class='text-black font-weight-bold'><strong>Cart Subtotal</strong></td>
 												<td class='text-black'>$$total_price.00</td>
 											</tr>
@@ -238,58 +146,65 @@
 												<td class='text-black font-weight-bold'><strong>Order Total</strong></td>
 												<td class='text-black font-weight-bold'><strong>$$total_price.00</strong></td>
 											</tr>";
+													}
 												}
-											}
-											?>
+												?>
 
 
-										</tbody>
-									</table>
+											</tbody>
+										</table>
 
-									<div class="border p-3 mb-3">
-										<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
+										<div class="border p-3 mb-3">
+											<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
 
-										<div class="collapse" id="collapsebank">
-											<div class="py-2">
-												<p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+											<div class="collapse" id="collapsebank">
+												<div class="py-2">
+													<p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+												</div>
 											</div>
 										</div>
-									</div>
 
-									<div class="border p-3 mb-3">
-										<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
+										<div class="border p-3 mb-3">
+											<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
 
-										<div class="collapse" id="collapsecheque">
-											<div class="py-2">
-												<p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+											<div class="collapse" id="collapsecheque">
+												<div class="py-2">
+													<p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+												</div>
 											</div>
 										</div>
-									</div>
 
-									<div class="border p-3 mb-5">
-										<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
+										<div class="border p-3 mb-5">
+											<h3 class="h6 mb-0"><a class="d-block" data-bs-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
 
-										<div class="collapse" id="collapsepaypal">
-											<div class="py-2">
-												<p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+											<div class="collapse" id="collapsepaypal">
+												<div class="py-2">
+													<p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+												</div>
 											</div>
 										</div>
-									</div>
 
-									<div class="form-group">
-										<button class="btn btn-black btn-lg py-3 btn-block">Place Order</button>
-									</div>
+										<div class="form-group">
+											<input type="submit" class="btn btn-black btn-lg py-3 btn-block" value="Place Order" name="checkout">
+										</div>
 
+									</div>
 								</div>
 							</div>
-						</div>
 
+						</div>
 					</div>
-				</div>
-				<!-- </form> -->
+				</form>
 			</div>
 		</div>
 
-		<script defer>
-			// window.location.reload();
-		</script>
+		<!-- <script defer>
+			window.addEventListener('pageshow', function(event) {
+				if (!sessionStorage.getItem('hasReloaded')) {
+					sessionStorage.setItem('hasReloaded', 'true');
+					location.reload();
+				} else {
+					sessionStorage.removeItem('hasReloaded');
+				}
+			});
+		</script> -->

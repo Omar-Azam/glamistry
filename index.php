@@ -62,6 +62,22 @@
 		if(isset($_SESSION['allow_checkout'])){
 			unset($_SESSION['allow_checkout']);
 		}
+	}
+
+	if (isset($_GET['thankyou'])) {
+		if (isset($_SESSION['user']['id'])) {
+			if(isset($_SESSION['allow_thankyou'])){
+				include('./client/thankyou.php');
+			} else{
+				header('Location: /glamistry/');
+			}
+		} else {
+			header('Location: /glamistry/?login=true');
+		}
+	} else {
+		if(isset($_SESSION['allow_thankyou'])){
+			unset($_SESSION['allow_thankyou']);
+		}
 	} 
 
 	if ($_SERVER['REQUEST_URI'] === '/glamistry' || $_SERVER['REQUEST_URI'] === '/glamistry/' || $_SERVER['REQUEST_URI'] === '/glamistry/index.php') {

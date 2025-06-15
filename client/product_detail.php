@@ -21,7 +21,7 @@
 
                         echo "<div class='border rounded-4 mb-3 d-flex justify-content-center'>
                     <a data-fslightbox='mygalley' class='rounded-4' data-type='image'>
-                        <img style='max-width: 100%; max-height: 100vh; margin: auto;' class='rounded-4 fit' src='$image_path' />
+                        <img style='max-width: 100%; max-height: 100vh; margin: auto;' class='rounded-4 fit' src='./admin/server/$image_path' />
                     </a>
                 </div>
 

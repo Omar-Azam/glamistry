@@ -1,4 +1,6 @@
-Glamistry E-Project
+CREATE DATABASE glamistry;
+
+USE glamistry;
 
 CREATE TABLE users(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -8,6 +10,7 @@ CREATE TABLE users(
     dob DATE NOT NULL,
     gender VARCHAR(10) NOT NULL,
     password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'user',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -44,33 +47,6 @@ CREATE TABLE products (
 
 );
 
--- Jewelery (category_id = 1)
-INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
-('Gold Necklace', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Silver Bracelet', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Diamond Ring', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Pearl Earrings', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Anklet', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1),
-('Charm Pendant', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 1);
-
--- Lip Gloss (category_id = 2)
-INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
-('Cherry Lip Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Matte Lip Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Clear Shine Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Rose Tinted Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Vanilla Scented Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2),
-('Glitter Lip Gloss', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 2);
-
--- Mascara (category_id = 3)
-INSERT INTO products (name, image_name, image_path, price, category_id) VALUES
-('Waterproof Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Volumizing Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Lengthening Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Curling Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Fiber Lash Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3),
-('Colored Mascara', 'Description goes here please write a description according to the product!', 'product-2.png', './public/product_images/product-2.png', 56, 3);
-
 CREATE TABLE cart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -82,4 +58,45 @@ CREATE TABLE cart (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
+CREATE TABLE addresses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    company VARCHAR(100),
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255),
+    state VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    address_id INT NOT NULL,
+    total_amount INT NOT NULL,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (address_id) REFERENCES addresses(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price INT NOT NULL,
+
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+CREATE TABLE contact(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 

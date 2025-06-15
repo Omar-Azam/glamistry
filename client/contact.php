@@ -24,11 +24,13 @@
 		<div class="untree_co-section">
 			<div class="container">
 
+
 				<div class="block">
 					<div class="row justify-content-center">
 
 
 						<div class="col-md-8 col-lg-8 pb-4">
+
 
 
 							<div class="row mb-5">
@@ -40,7 +42,7 @@
 											</svg>
 										</div> <!-- /.icon -->
 										<div class="service-contents">
-											<p>43 Raymouth Rd. Baltemoer, London 3910</p>
+											<p>Aptech North Nazimabad, Karachi, Pakistan</p>
 										</div> <!-- /.service-contents-->
 									</div> <!-- /.service -->
 								</div>
@@ -53,7 +55,7 @@
 											</svg>
 										</div> <!-- /.icon -->
 										<div class="service-contents">
-											<p>info@yourdomain.com</p>
+											<p>thisisomarazam.com</p>
 										</div> <!-- /.service-contents-->
 									</div> <!-- /.service -->
 								</div>
@@ -66,19 +68,23 @@
 											</svg>
 										</div> <!-- /.icon -->
 										<div class="service-contents">
-											<p>+1 294 3925 3939</p>
+											<p>+1 234 5678 9101</p>
 										</div> <!-- /.service-contents-->
 									</div> <!-- /.service -->
 								</div>
 							</div>
 
-							<form>
+							<iframe class="mb-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.15223385101!2d67.03217337401436!3d24.926883342598988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f90157042d3%3A0x93d609e8bec9a880!2sAptech%20Computer%20Education%20North%20Nazimabad%20Center!5e0!3m2!1sen!2s!4v1750023737673!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+							<form method="post" action="./server/contact_request.php">
 								<div class="row">
 									<!-- <div class="col-6"> -->
-										<div class="form-group">
-											<label class="text-black" for="fname">Name: </label>
-											<input type="text" class="form-control" id="fname">
-										</div>
+									<div class="form-group">
+										<label class="text-black" for="fname">Name: <?php
+																							error("name_error", 5000);
+																							?></label>
+										<input type="text" class="form-control" id="fname" name="name" value="<?php value("name") ?>">
+									</div>
 									<!-- </div> -->
 									<!-- <div class="col-6">
 										<div class="form-group">
@@ -87,17 +93,21 @@
 										</div>
 									</div>
 								</div> -->
-								<div class="form-group">
-									<label class="text-black" for="email">Email: </label>
-									<input type="email" class="form-control" id="email">
-								</div>
+									<div class="form-group">
+										<label class="text-black" for="email">Email: <?php
+																							error("email_error", 5000);
+																							?></label>
+										<input type="email" class="form-control" id="email" name="email" value="<?php value("email") ?>">
+									</div>
 
-								<div class="form-group mb-5">
-									<label class="text-black" for="message">Message: </label>
-									<textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
-								</div>
+									<div class="form-group mb-5">
+										<label class="text-black" for="message">Message: <?php
+																							error("message_error", 5000);
+																							?></label>
+										<textarea name="message" class="form-control" id="message" cols="30" rows="5"><?php value("message") ?></textarea>
+									</div>
 
-								<button type="submit" class="btn btn-primary-hover-outline">Send Message</button>
+									<button type="submit" name="contact" class="btn btn-primary-hover-outline">Send Message</button>
 							</form>
 
 						</div>

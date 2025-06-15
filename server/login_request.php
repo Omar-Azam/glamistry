@@ -45,22 +45,42 @@ if (isset($_POST['login'])) {
             $name = $row['name'];
             $id = $row['id'];
             $number = $row['number'];
+            $role = $row['role'];
             if (password_verify($pass, $row['password'])) {
-                $_SESSION['user'] = ['id' => $id, 'name' => $name, 'email' => $email, 'number' => $number];
-                if (isset($_POST['remember'])) {
-                    $token = bin2hex(random_bytes(32));
-                    $expires = date('Y-m-d H:i:s', strtotime('+30 days'));
 
-                    setcookie('remember', $token, time() + (86400 * 30), "/", "", false, true);
+                if ($role == 'admin') {
+                    $_SESSION['user'] = ['id' => $id, 'name' => $name, 'email' => $email, 'number' => $number, 'role' => $role];
+                    if (isset($_POST['remember'])) {
+                        $token = bin2hex(random_bytes(32));
+                        $expires = date('Y-m-d H:i:s', strtotime('+30 days'));
 
-                    $user = $conn->prepare("INSERT INTO user_tokens (user_id, name, email, number, token, expires_at) VALUES (?, ?, ?, ?, ?, ?)");
-                    $user->bind_param("isssss", $_SESSION['user']['id'], $_SESSION['user']['name'], $_SESSION['user']['email'], $_SESSION['user']['number'], $token, $expires);
-                    $user->execute();
+                        setcookie('remember', $token, time() + (86400 * 30), "/", "", false, true);
+
+                        $user = $conn->prepare("INSERT INTO user_tokens (user_id, name, email, number, token, expires_at) VALUES (?, ?, ?, ?, ?, ?)");
+                        $user->bind_param("isssss", $_SESSION['user']['id'], $_SESSION['user']['name'], $_SESSION['user']['email'], $_SESSION['user']['number'], $token, $expires);
+                        $user->execute();
+                    }
+                    unset($_SESSION['login_email']);
+                    unset($_SESSION['login_pass']);
+                    header("Location: /glamistry/admin/");
+                    die();
+                } else {
+                    $_SESSION['user'] = ['id' => $id, 'name' => $name, 'email' => $email, 'number' => $number];
+                    if (isset($_POST['remember'])) {
+                        $token = bin2hex(random_bytes(32));
+                        $expires = date('Y-m-d H:i:s', strtotime('+30 days'));
+
+                        setcookie('remember', $token, time() + (86400 * 30), "/", "", false, true);
+
+                        $user = $conn->prepare("INSERT INTO user_tokens (user_id, name, email, number, token, expires_at) VALUES (?, ?, ?, ?, ?, ?)");
+                        $user->bind_param("isssss", $_SESSION['user']['id'], $_SESSION['user']['name'], $_SESSION['user']['email'], $_SESSION['user']['number'], $token, $expires);
+                        $user->execute();
+                    }
+                    unset($_SESSION['login_email']);
+                    unset($_SESSION['login_pass']);
+                    header("Location: /glamistry/");
+                    die();
                 }
-                unset($_SESSION['login_email']);
-                unset($_SESSION['login_pass']);
-                header("Location: /glamistry/");
-                die();
             } else {
                 $_SESSION['pass_error'] = "*Wrong Password!";
                 unset($_SESSION['login_pass']);

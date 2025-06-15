@@ -33,9 +33,12 @@
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <?php if (isset($_SESSION['user']['id'])): ?>
-                    <li><a class="nav-link" href="/glamistry/server/logout_request.php"><img src="./public/images/user.svg"> (Logout)</a></li>
+                <?php if (isset($_SESSION['user']['role']) == 'admin'): ?>
+                    <li><a class="nav-link" href="/glamistry/admin/"><img src="./public/images/user.svg"> (Admin Panel)</a></li>
                     <li><a class="nav-link" href="?cart=true"><img src="./public/images/cart.svg"> (Cart)</a></li>
+                    <?php elseif(isset($_SESSION['user']['id'])): ?>
+                        <li><a class="nav-link" href="/glamistry/server/logout_request.php" style="color: #e55353;"><img src="./public/images/user.svg"> (Logout)</a></li>
+                        <li><a class="nav-link" href="?cart=true"><img src="./public/images/cart.svg"> (Cart)</a></li>
                 <?php else: ?>
                     <li><a class="nav-link" href="?login=true"><img src="./public/images/user.svg"> (Login)</a></li>
                     <li><a class="nav-link" href="?login=true"><img src="./public/images/cart.svg"> (Cart)</a></li>

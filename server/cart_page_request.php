@@ -17,7 +17,7 @@ if (isset($_SESSION['user']['id'])) {
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                
+
                 while ($row = $result->fetch_assoc()) {
                     $product_id = $row['product_id'];
                     $quantity = $row['quantity'];
@@ -31,7 +31,7 @@ if (isset($_SESSION['user']['id'])) {
 
                         echo "<tr>
                                         <td class='product-thumbnail'>
-                                        <img src='$image_path' alt='Image' class='img-fluid'>
+                                        <img src='./admin/server/$image_path' alt='Image' class='img-fluid'>
                                         </td>
                                         <td class='product-name'>
                                         <h2 class='h5 text-black'>$name</h2>
@@ -55,6 +55,20 @@ if (isset($_SESSION['user']['id'])) {
                     }
                 }
             } else {
+                echo "<tr>
+                                        <td class='product-thumbnail'>
+                                        empty
+                                        </td>
+                                        <td class='product-name'>
+                                        empty
+                                        </td>
+                                        <td>empty</td>
+                                        <td>
+                                        empty
+                                                </td>
+                                                <td>empty</td>
+                                                <td>empty</td>
+                                                </tr>";
                 unset($_SESSION['checkout_data']);
             }
         }
@@ -69,33 +83,58 @@ if (isset($_SESSION['user']['id'])) {
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $total_price = $row['total_price'];
-                echo "<div class='row'>
-                                    <div class='col-md-12 text-right border-bottom mb-5'>
-                                        <h3 class='text-black h4 text-uppercase'>Cart Totals</h3>
+                if ($total_price > 0) {
+                    echo "<div class='row'>
+                                        <div class='col-md-12 text-right border-bottom mb-5'>
+                                            <h3 class='text-black h4 text-uppercase'>Cart Totals</h3>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class='row mb-3'>
-                                    <div class='col-md-6'>
-                                        <span class='text-black'>Subtotal</span>
+                                    <div class='row mb-3'>
+                                        <div class='col-md-6'>
+                                            <span class='text-black'>Subtotal</span>
+                                        </div>
+                                        <div class='col-md-6 text-right'>
+                                            <strong class='text-black'>$$total_price.00</strong>
+                                        </div>
                                     </div>
-                                    <div class='col-md-6 text-right'>
-                                        <strong class='text-black'>$$total_price.00</strong>
+                                    <div class='row mb-5'>
+                                        <div class='col-md-6'>
+                                            <span class='text-black'>Total</span>
+                                        </div>
+                                        <div class='col-md-6 text-right'>
+                                            <strong class='text-black'>$$total_price.00</strong>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class='row mb-5'>
-                                    <div class='col-md-6'>
-                                        <span class='text-black'>Total</span>
-                                    </div>
-                                    <div class='col-md-6 text-right'>
-                                        <strong class='text-black'>$$total_price.00</strong>
-                                    </div>
-                                </div>
-    
-                                <div class='row'>
-                                    <div class='col-md-12'>
-                                        <a class='btn btn-black btn-lg py-3 btn-block' id='checkout'>Proceed To Checkout</a>
-                                    </div>
-                                </div>";
+        
+                                    <div class='row'>
+                                        <div class='col-md-12'>
+                                            <a class='btn btn-black btn-lg py-3 btn-block' id='checkout'>Proceed To Checkout</a>
+                                        </div>
+                                    </div>";
+                } else {
+                    echo "<div class='row'>
+								<div class='col-md-12 text-right border-bottom mb-5'>
+									<h3 class='text-black h4 text-uppercase'>Cart Totals</h3>
+								</div>
+							</div>
+							<div class='row mb-3'>
+								<div class='col-md-6'>
+									<span class='text-black'>Subtotal</span>
+								</div>
+								<div class='col-md-6 text-right'>
+									<strong class='text-black'>$00.00</strong>
+								</div>
+							</div>
+							<div class='row mb-5'>
+								<div class='col-md-6'>
+									<span class='text-black'>Total</span>
+								</div>
+								<div class='col-md-6 text-right'>
+									<strong class='text-black'>$00.00</strong>
+								</div>
+							</div>
+                            <div class='row'>";
+                }
             }
         }
 
@@ -103,7 +142,6 @@ if (isset($_SESSION['user']['id'])) {
             $_SESSION['allow_checkout'] = true;
             echo 1;
         }
-
     }
 
 
@@ -161,6 +199,5 @@ if (isset($_SESSION['user']['id'])) {
                 $conn->query($sql);
             }
         }
-
     }
 }
