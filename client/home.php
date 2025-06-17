@@ -6,7 +6,7 @@
                 <div class="intro-excerpt">
                     <h1>Modern Jewelry <span clsas="d-block">& Cosmetics</span></h1>
                     <p class="mb-4">With a passion for detail and a commitment to your satisfaction, we go beyond just selling products — we deliver a refined, trustworthy experience. Whether you're celebrating a special occasion or simply embracing everyday luxury, we're here to make you feel radiant.</p>
-                    <p><a href="?shop=true" class="btn btn-secondary me-2">Shop Now</a><a href="?shop=true" class="btn btn-white-outline">Explore</a></p>
+                    <p><a href="?shop=true" class="btn btn-secondary me-2">Shop Now</a></p>
                 </div>
             </div>
             <div class="col-lg-7">
@@ -30,49 +30,7 @@
                 <p class="mb-4">From timeless elegance to modern glamour, our collection blends quality craftsmanship with ethically sourced materials, ensuring every purchase is one you can wear with pride. </p>
                 <p><a href="?shop=true" class="btn">Explore</a></p>
             </div>
-            <!-- End Column 1 -->
-
-            <!-- Start Column 2 -->
-            <!-- <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                <a class="product-item" href="cart.html">
-                    <img src="./public/images/product-1.png" class="img-fluid product-thumbnail">
-                    <h3 class="product-title">Nordic Chair</h3>
-                    <strong class="product-price">$50.00</strong>
-
-                    <span class="icon-cross">
-                        <img src="./public/images/cross.svg" class="img-fluid">
-                    </span>
-                </a>
-            </div> -->
-            <!-- End Column 2 -->
-
-            <!-- Start Column 3 -->
-            <!-- <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                <a class="product-item" href="cart.html">
-                    <img src="./public/images/product-2.png" class="img-fluid product-thumbnail">
-                    <h3 class="product-title">Kruzo Aero Chair</h3>
-                    <strong class="product-price">$78.00</strong>
-
-                    <span class="icon-cross">
-                        <img src="./public/images/cross.svg" class="img-fluid">
-                    </span>
-                </a>
-            </div> -->
-            <!-- End Column 3 -->
-
-            <!-- Start Column 4 -->
-            <!-- <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                <a class="product-item" href="cart.html">
-                    <img src="./public/images/product-3.png" class="img-fluid product-thumbnail">
-                    <h3 class="product-title">Ergonomic Chair</h3>
-                    <strong class="product-price">$43.00</strong>
-
-                    <span class="icon-cross">
-                        <img src="./public/images/cross.svg" class="img-fluid">
-                    </span>
-                </a>
-            </div> -->
-            <!-- End Column 4 -->
+            
 
             <?php
 
@@ -250,15 +208,14 @@
 
                                     <div class="testimonial-block text-center">
                                         <blockquote class="mb-5">
-                                            <p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+                                            <p>&ldquo;I ordered a necklace for my sister's wedding, and it was absolutely stunning! The quality is amazing, and the packaging felt so luxurious. It truly made the moment unforgettable.&rdquo;</p>
                                         </blockquote>
 
                                         <div class="author-info">
                                             <div class="author-pic">
-                                                <img src="./public/images/person-1.png" alt="Maria Jones" class="img-fluid">
+                                                <img src="./public/images/person-1.png" alt="img" class="img-fluid">
                                             </div>
-                                            <h3 class="font-weight-bold">Maria Jones</h3>
-                                            <span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+                                            <h3 class="font-weight-bold">Ayesha K., Karachi</h3>
                                         </div>
                                     </div>
 
@@ -273,15 +230,14 @@
 
                                     <div class="testimonial-block text-center">
                                         <blockquote class="mb-5">
-                                            <p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+                                            <p>&ldquo;I’ve tried so many cosmetics brands, but nothing compares to the glow I get from their highlighter and lipstick. Long-lasting, skin-friendly, and worth every penny!&rdquo;</p>
                                         </blockquote>
 
                                         <div class="author-info">
                                             <div class="author-pic">
-                                                <img src="./public/images/person-1.png" alt="Maria Jones" class="img-fluid">
+                                                <img src="./public/images/person-1.png" alt="img" class="img-fluid">
                                             </div>
-                                            <h3 class="font-weight-bold">Maria Jones</h3>
-                                            <span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+                                            <h3 class="font-weight-bold">Fatima R., Lahore</h3>
                                         </div>
                                     </div>
 
@@ -296,15 +252,14 @@
 
                                     <div class="testimonial-block text-center">
                                         <blockquote class="mb-5">
-                                            <p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+                                            <p>&ldquo;Not only did my order arrive earlier than expected, but the customer service team was also so helpful and kind. Shopping here feels personal and reliable.&rdquo;</p>
                                         </blockquote>
 
                                         <div class="author-info">
                                             <div class="author-pic">
-                                                <img src="./public/images/person-1.png" alt="Maria Jones" class="img-fluid">
+                                                <img src="./public/images/person-1.png" alt="img" class="img-fluid">
                                             </div>
-                                            <h3 class="font-weight-bold">Maria Jones</h3>
-                                            <span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+                                            <h3 class="font-weight-bold">Zoya M., Islamabad</h3>
                                         </div>
                                     </div>
 
@@ -340,9 +295,9 @@
                 <div class="post-entry">
                     <a href="#" class="post-thumbnail"><img src="./public/images/post-1.jpg" alt="Image" class="img-fluid"></a>
                     <div class="post-content-entry">
-                        <h3><a href="#">First Time Home Owner Ideas</a></h3>
+                        <h3><a>5 Skincare Secrets for Glowing Skin</a></h3>
                         <div class="meta">
-                            <span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+                            <span>by <a>Kristin Watson</a></span> <span>on <a>Dec 19, 2021</a></span>
                         </div>
                     </div>
                 </div>
@@ -352,9 +307,9 @@
                 <div class="post-entry">
                     <a href="#" class="post-thumbnail"><img src="./public/images/post-2.jpg" alt="Image" class="img-fluid"></a>
                     <div class="post-content-entry">
-                        <h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+                        <h3><a href="#">The Power Of Red Lipstick</a></h3>
                         <div class="meta">
-                            <span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
+                            <span>by <a>Robert Fox</a></span> <span>on <a>Dec 15, 2021</a></span>
                         </div>
                     </div>
                 </div>
@@ -364,7 +319,7 @@
                 <div class="post-entry">
                     <a href="#" class="post-thumbnail"><img src="./public/images/post-3.jpg" alt="Image" class="img-fluid"></a>
                     <div class="post-content-entry">
-                        <h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+                        <h3><a href="#">How to Layer Your Jewelry Like a Pro</a></h3>
                         <div class="meta">
                             <span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
                         </div>

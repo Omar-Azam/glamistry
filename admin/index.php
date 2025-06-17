@@ -168,6 +168,8 @@ include('./server/error_handling.php');
 
 					$sql = "DELETE FROM products WHERE id = $id;";
 
+					// image delete code ⬇
+
 					$image_name = $_GET['product_image'];
 
 					$imagePath = "./server/product_images/$image_name";
@@ -177,6 +179,8 @@ include('./server/error_handling.php');
 							unlink($imagePath);
 						}
 					}
+
+					// $conn->query($sql);
 
 					header("Location: /glamistry/admin/?products=true");
 					die();

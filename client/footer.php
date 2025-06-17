@@ -36,7 +36,7 @@
         <div class="row g-5 mb-5">
             <div class="col-lg-4">
                 <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Glamistry<span>.</span></a></div>
-                <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+                <p class="mb-4">Discover timeless elegance and radiant beauty with our exclusive collection of jewelry and cosmetics. From dazzling pieces that complete your look to premium beauty essentials that highlight your natural charm, we are committed to bringing you quality, style, and confidence. Shop with us and enjoy secure shopping, fast delivery, and exceptional customer care—because you deserve to shine, inside and out.</p>
 
                 <ul class="list-unstyled custom-social">
                     <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -50,10 +50,10 @@
                 <div class="row links-wrap">
                     <div class="col-6 col-sm-6 col-md-3">
                         <ul class="list-unstyled">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="?about=true">About us</a></li>
+                            <li><a href="?services=true">Services</a></li>
+                            <li><a href="?blog=true">Blog</a></li>
+                            <li><a href="?contact=true">Contact us</a></li>
                         </ul>
                     </div>
 
@@ -76,9 +76,9 @@
 
                     <div class="col-6 col-sm-6 col-md-3">
                         <ul class="list-unstyled">
-                            <li><a href="#">Nordic Chair</a></li>
-                            <li><a href="#">Kruzo Aero</a></li>
-                            <li><a href="#">Ergonomic Chair</a></li>
+                            <li><a href="?shop=true">Cosmetics</a></li>
+                            <li><a href="?shop=true">Jewelry</a></li>
+                            <li><a href="?shop=true">Fashion</a></li>
                         </ul>
                     </div>
                 </div>

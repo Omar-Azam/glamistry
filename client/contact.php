@@ -5,8 +5,7 @@
 					<div class="col-lg-5">
 						<div class="intro-excerpt">
 							<h1>Contact</h1>
-							<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-							<p><a href="?shop=true" class="btn btn-secondary me-2">Shop Now</a><a href="?shop=true" class="btn btn-white-outline">Explore</a></p>
+							<p class="mb-4">Have questions or need help? Reach out to the Glamistry team — we’re here to assist you with your jewelry and cosmetics needs.							<p><a href="?shop=true" class="btn btn-secondary me-2">Shop Now</a></p>
 						</div>
 					</div>
 					<div class="col-lg-7">
